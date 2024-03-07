@@ -19,7 +19,8 @@ Run
 
 .. code-block:: text
 
-    $ cargo check
+    $ cargo build
+	$ cargo check
     $ cargo run	
         
 	
