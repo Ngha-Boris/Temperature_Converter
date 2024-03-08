@@ -13,7 +13,7 @@ fn main() {
             .read_line(&mut conversion_type)
             .expect("Failed to read line");
 
-        let conversion_type: i32 = match conversion_type.trim().parse() {
+        let conversion_type = match conversion_type.trim().parse() {
             Ok(num) => num,
             Err(_) => {
                 println!("Please input either 1, 2, or 3");
@@ -36,7 +36,7 @@ fn main() {
                 };
 
                 let celsius = (temperature - 32.) / 1.8;
-                println!("The value in Celsius is: {celsius}°C");
+                println!("The value in Celsius is: {}°C", celsius);
             }
             2 => {
                 println!("Please input the temperature: ");
@@ -52,7 +52,7 @@ fn main() {
                 };
 
                 let  fahrenheit = temperature * 1.8 + 32.0;
-                println!("The value in Fahrenheit is: {fahrenheit}°F");
+                println!("The value in Fahrenheit is: {}°F", fahrenheit);
             }
             3 => {
                 println!("Thank you for using our program");
