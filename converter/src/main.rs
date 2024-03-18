@@ -3,11 +3,7 @@ use std::io;
 fn main() {
     println!("Hello there, welcome! lets do some conversions 😎😊😊");
     loop {
-        println!("Please select the conversion type");
-        println!("1. Fahrenheit to Celsius");
-        println!("2. Celsius to Fahrenheit");
-        println!("3. Exit Program");
-
+        println!("Please select the conversion type\n1. Fahrenheit to Celsius\n2. Celsius to Fahrenheit\n3. Exit Program");
         let mut conversion_type = String::new();
         io::stdin()
             .read_line(&mut conversion_type)
