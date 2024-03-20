@@ -6,7 +6,7 @@ fn main() {
 
     loop {
         let conversion_type = read_input(
-        "Please select the conversion type\n
+            "Please select the conversion type\n
         1.Fahrenheit to Celsius\n
         2.Celsius to Fahrenheit\n
         3.Exit Program",
