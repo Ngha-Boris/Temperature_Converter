@@ -34,6 +34,21 @@ jobs:
       - name: Build Project
         run: cargo build --release
 
+  timeout:
+      timeout-minutes: 1
+      runs-on: ubuntu-latest
+      permissions:
+        actions: write
+      steps:
+          - name: Monitor deployment for timeout and cancel if crossed the threshold
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            run: |
+              sleep 1m
+              gh -R {owner}/{repo} run list -w deploy.yml -s queued --json databaseId -q .[].databaseId | xargs gh -R {owner}/{repo} run cancel
+  
+      
+
   deploy:
     runs-on: self-hosted
     needs: build
