@@ -34,28 +34,4 @@ jobs:
       - name: Build Project
         run: cargo build --release
 
-  deploy:
-    runs-on: self-hosted
-    needs: build
-    if: github.ref == 'refs/heads/main'
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Install Rust
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          profile: minimal
-          override: true
-
-      - name: Install Dependencies
-        run: cargo fetch
-
-      - name: Build Project
-        run: cargo build --release
-
-      - name: Deploy to Production
-        run: |
-         
+  
