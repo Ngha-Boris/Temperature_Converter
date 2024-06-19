@@ -1,22 +1,62 @@
-name: Rust
+name: Rust CI/CD Pipeline
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
+      - develop
   pull_request:
-    branches: [ "main" ]
-
-env:
-  CARGO_TERM_COLOR: always
+    branches:
+      - main
+      - develop
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Build
-      run: cargo build --verbose
-    - name: Run tests
-      run: cargo test --verbose
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+          override: true
+
+      - name: Install Dependencies
+        run: cargo fetch
+
+      - name: Run Tests
+        run: cargo test
+
+      - name: Build Project
+        run: cargo build --release
+
+  deploy:
+    runs-on: self-hosted
+    needs: build
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+          override: true
+
+      - name: Install Dependencies
+        run: cargo fetch
+
+      - name: Build Project
+        run: cargo build --release
+
+      - name: Deploy to Production
+        run: |
+          # Add your deployment script/command here
+          echo "Deploying to production..."
