@@ -1,26 +1,19 @@
-Converter
----------
-Description:
-This project is implemented using rust.
-The project is aimed at converting temperatures from degree celsius to fahrenheit and also from fahrenheit back to degree celsius.
+# Converter
+This is a simple Rust application that allows users to convert temperatures between Fahrenheit and Celsius. The app is built using two main files:
+### Running the Application
+- To run the application locally, use the following command:
+```bash
+cargo run
+```
+- The program will prompt you to select a conversion type:
+```bash
+Hello there, welcome! let's do some conversions 😎😊😊
+Please select the conversion type
+    1. Fahrenheit to Celsius
+    2. Celsius to Fahrenheit
+    3. Exit Program
+```
 
-Installation
-------------
-**Be sure to use the same version of the code as the version of the docs
-you're reading.** You probably want the latest tagged version, but the
-default Git version is the main branch. ::
 
-	 # clone the repository
-	 $ git@github.com:Ngha-Boris/Temperature_Converter.git
-	
-	 $ cd converter    
-Run
----
-
-.. code-block:: text
-
-    $ cargo build
-	$ cargo check
-    $ cargo run	
         
 	
