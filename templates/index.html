@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .navbar {
+            background-color: #6200ea;
+            padding: 1rem;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #6200ea;
+        }
+        label {
+            display: block;
+            margin: 1rem 0 0.5rem;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #6200ea;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #3700b3;
+        }
+        .result {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #e8eaf6;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <span>Temperature Converter</span>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/history">History</a>
+        </nav>
+    </div>
+    <div class="container">
+        <h1>Temperature Converter</h1>
+        <form action="/convert" method="post">
+            <label for="temperature">Temperature:</label>
+            <input type="number" step="0.01" name="temperature" required title="Enter temperature" placeholder="Enter temperature">
+            <br>
+            <label for="conversion_type">Conversion Type:</label>
+            <select name="conversion_type" required>
+                <option value="f_to_c">Fahrenheit to Celsius</option>
+                <option value="c_to_f">Celsius to Fahrenheit</option>
+                <option value="k_to_c">Kelvin to Celsius</option>
+                <option value="c_to_k">Celsius to Kelvin</option>
+            </select>
+            <br>
+            <button type="submit">Convert</button>
+        </form>
+
+        {% if result %}
+        <div class="result">
+            <strong>Result:</strong> {{ result }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
